@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FleetappApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(FleetappApplication.class, args);
+		System.out.println("Hello to Fleet Management Application");
 	}
 
 }

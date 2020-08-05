@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="utf-8">
@@ -311,11 +311,11 @@
 
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
+      <div id="sidebar" class="nav-collapse " th:fragment="sidebar">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="index.html">
+            <a class="" th:href="@{/home}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -323,64 +323,81 @@
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
-                          <span>Forms</span>
+                          <span>Vehicle</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Form Elements</a></li>
-              <li><a class="" href="form_validation.html">Form Validation</a></li>
+              <li><a class="" th:href="@{/VehicleDate}">Vehaicle Data</a></li>
+              <li><a class="" th:href="@{/Maintenence}">Maintenence</a></li>
+              <li><a class="" th:href="@{/Movements}">Movements</a></li>
+              <li><a class="" th:href="@{/Hires}">Hires</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
+                          <span>Parameters</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="general.html">Elements</a></li>
-              <li><a class="" href="buttons.html">Buttons</a></li>
-              <li><a class="" href="grids.html">Grids</a></li>
+              <li><a class="" th:href="@{/VehicleMake}">Vehicle Make</a></li>
+              <li><a class="" th:href="@{/VehicleType}">Vehicle Type</a></li>
+              <li><a class="" th:href="@{/Vehicle Model}">Vehicle Model</a></li>
+              <li><a class="" th:href="@{/StatusVlues}">Status Vlues</a></li>
             </ul>
-          </li>
-          <li>
-            <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-
-                      </a>
-
           </li>
 
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
+              <i class="icon_desktop"></i>
+              <span>People</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
             <ul class="sub">
-              <li><a class="" href="basic_table.html">Basic Table</a></li>
+              <li><a class="" th:href="@{/Employees}">Employees</a></li>
+              <li><a class="" th:href="@{/Clients}">Clients</a></li>
+              <li><a class="" th:href="@{/Suppliers}">Suppliers</a></li>
+              <li><a class="" th:href="@{/Contacts}">Contacts</a></li>
+              <li><a class="" th:href="@{/Users}">Users</a></li>
+            </ul>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+              <i class="icon_desktop"></i>
+              <span>HR Settings</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+              <li><a class="" th:href="@{/JobTitles}">Job Titles</a></li>
+              <li><a class="" th:href="@{/EmployeeTypes}">Employee Types</a></li>
+
+            </ul>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+              <i class="icon_desktop"></i>
+              <span>Accounts</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+              <li><a class="" th:href="@{/Invoice}">Invoice</a></li>
+              <li><a class="" th:href="@{/InvoiceStatusValues}">InvoiceStatusValues</a></li>
+
             </ul>
           </li>
 
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
+                          <span>Globals</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="profile.html">Profile</a></li>
-              <li><a class="" href="login.html"><span>Login Page</span></a></li>
-              <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-              <li><a class="" href="blank.html">Blank Page</a></li>
-              <li><a class="" href="404.html">404 Error</a></li>
+              <li><a class="" th:href="@{/Countries}">Countries</a></li>
+              <li><a class="" th:href="@{/States}"><span>States</span></a></li>
+              <li><a class="" th:href="@{/Locations}"><span>Locations</span></a></li>
             </ul>
           </li>
 

@@ -19,24 +19,24 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public abstract class Auditable<U> {
 
     @CreatedBy
-    protected U createdBy;
+    protected String createdBy;
 
     @CreatedDate
     @Temporal(TIMESTAMP)
     protected Date createdDate;
 
     @LastModifiedBy
-    protected U lastModifiedBy;
+    protected String lastModifiedBy;
 
     @LastModifiedDate
     @Temporal(TIMESTAMP)
     protected Date lastModifiedDate;
 
-    public U getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(U createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -48,11 +48,11 @@ public abstract class Auditable<U> {
         this.createdDate = createdDate;
     }
 
-    public U getLastModifiedBy() {
+    public String getLastModifiedBy() {
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(U lastModifiedBy) {
+    public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
 

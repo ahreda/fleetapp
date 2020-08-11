@@ -402,49 +402,49 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> List of Countries </h1>
+            <h1> List of Suppliers </h1>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">New Country</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSupplier" data-whatever="@mdo">New Supplier</button>
 
 
             <table class="table">
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Description</th>
-                    <th>Capital</th>
-                    <th>Code</th>
-                    <th>Nationality</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Email</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="country:${countries}">
-                    <td th:text="${country.id}"></td>
-                    <td th:text="${country.description}"></td>
-                    <td th:text="${country.capital}"></td>
-                    <td th:text="${country.code}"></td>
-                    <td th:text="${country.nationality}"></td>
+                <tr th:each="supplier:${suppliers}" >
+                    <td th:text="${supplier.id}"></td>
+                    <td th:text="${supplier.name}"></td>
+                    <td th:text="${supplier.city}"></td>
+                    <td th:text="${supplier.email}"></td>
+
                     <td>
                         <div class="btn-group">
-                          <a th:href="@{/Countries/countryId/(id=${country.id})}" class="btn btn-primary" id="editButton"> Edit</a>
-
-                          <a th:href="@{/Countries/delete/(id=${country.id})}" class="btn btn-primary" id="deleteButton"> Delete</a>
+                            <a class="btn btn-primary" id="editButton"> Edit</i></a>
+                            <a class="btn btn-primary" id="detailsButton">Status</i> </a>
+                            <a class="btn btn-primary" id="deleteButton"> Delete</i></a>
 
                             <!--    <a th:href="@{'/Countries/countryId/'+ ${country.id}}" class="btn btn-primary" id="editButton"> Edit</a> -->
-                             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" data-whatever="@mdo">New Country</button> -->
+                            <!--    th:href="@{/Countries/delete/(id=${country.id})}"  -->
 
-                         </div>
+                        </div>
 
-                     </td>
-                 </tr>
-                 </tbody>
-             </table>
-     <div th:if="${success}">
-     <h1> You have successfully added new country </h1>
-     </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:if="${success}">
+                <h1> You have successfully added new country </h1>
+            </div>
 
 
-             <!-- page end-->
+            <!-- page end-->
         </section>
     </section>
     <!--main content end-->
@@ -463,42 +463,84 @@
 
 
 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Country</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New Supplier</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/Countries/addNew}" method="POST" >
+                <!--  <form th:action="@{/Countries/addNew}" method="POST" > -->
+                <form th:action="@{/Suppliers/addNewSupplier}" method="POST">
 
-                    <div class="form-group">
-                        <label for="Description-name" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="Description-name" name="description">
-                    </div>
+                    <table width="100%">
+                        <tr>
+                            <td width="50%">
 
-                    <div class="form-group">
-                        <label for="Capital-name" class="col-form-label">Capital:</label>
-                        <input type="text" class="form-control" id="Capital-name" name="capital">
-                    </div>
 
-                    <div class="form-group">
-                        <label for="Code-name" class="col-form-label">Code:</label>
-                        <input type="text" class="form-control" id="Code-name" name="code">
-                    </div>
+                                <div class="form-group">
+                                    <label for="Name-name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="Name-name" name="name">
+                                </div>
 
-                    <div class="form-group">
-                        <label for="Continant-name" class="col-form-label">Continent:</label>
-                        <input type="text" class="form-control" id="Continant-name" name="continent">
-                    </div>
+                                <div class="form-group">
+                                    <label for="Detailsname" class="col-form-label">Details:</label>
+                                    <input type="text" class="form-control" id="Detailsname" details="capital">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Code-name" class="col-form-label">Website:</label>
+                                    <input type="text" class="form-control" id="Code-name" name="website">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Addressname" class="col-form-label">Address:</label>
+                                    <input type="text" class="form-control" id="Addressname" name="address">
+                                </div>
+                            </td>
 
-                    <div class="form-group">
-                        <label for="Nationality-name" class="col-form-label">Nationality:</label>
-                        <input type="text" class="form-control" id="Nationality-name" name="nationality">
-                    </div>
+                            <td width="50%">
+                                <div class="form-group">
+                                    <label for="Country_id-name" class="col-form-label">Country:</label>
+                                    <select class="form-control" id="Country_id-name" name="countryid">
+                                        <option> -Select- </option>
+                                        <option th:each="country:${countries}"
+                                                th:value="${country.id}"
+                                                th:text="${country.description}">
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                            <label for="Countryidname" class="col-form-label">State:</label>
+                                            <select class="form-control" id="Countryidname" name="stateid">
+                                                <option> -Select- </option>
+                                                <option th:each="state:${states}"
+                                                        th:value="${state.id}"
+                                                        th:text="${state.name}">
+                                                </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="City-name" class="col-form-label">City</label>
+                                    <input type="text" class="form-control" id="City-name" name="city">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone-name" class="col-form-label">Phone:</label>
+                                    <input type="text" class="form-control" id="Phone-name" name="phone">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mobile-name" class="col-form-label">Phone:</label>
+                                    <input type="text" class="form-control" id="mobile-name" name="mobile">
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -516,46 +558,100 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newModalLabel">Update Country</h5>
+                <h5 class="modal-title" id="newModalLabel">Update State</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/Countries/update}" method="put" >
+                <form th:action="@{/State/update}" method="PUT" >
 
                     <div class="form-group">
-                        <label for="Description-name" class="col-form-label">id</label>
-                        <input type="text" class="form-control" id="idEdit" name="id">
+                        <label for="idEdit" class="col-form-label">State id</label>
+                        <input type="text" class="form-control" id="idEdit" name="id" readonly>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="description-name" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="descriptionEdit" name="description">
+                        <label for="nameEdit" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameEdit" name="name">
                     </div>
 
                     <div class="form-group">
-                        <label for="Capital-name" class="col-form-label">Capital:</label>
+                        <label for="capitalEdit" class="col-form-label">Capital:</label>
                         <input type="text" class="form-control" id="capitalEdit" name="capital">
                     </div>
 
                     <div class="form-group">
-                        <label for="Code-name" class="col-form-label">Code:</label>
+                        <label for="codeEdit" class="col-form-label">Code:</label>
                         <input type="text" class="form-control" id="codeEdit" name="code">
                     </div>
 
                     <div class="form-group">
-                        <label for="Continant-name" class="col-form-label">Continent:</label>
-                        <input type="text" class="form-control" id="continantEdit" name="continent">
+                        <label for="CountryidEdit" class="col-form-label">Country:</label>
+                        <div class="form-group">
+                            <label for="countryidEdit" class="col-form-label">Country:</label>
+                            <input type="text" class="form-control" id="countryidEdit" name="stateid">
+                        </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="Nationality-name" class="col-form-label">Nationality:</label>
-                        <input type="text" class="form-control" id="nationalityEdit" name="nationality">
+                        <label for="detailsEdit" class="col-form-label">Details:</label>
+                        <input type="text" class="form-control" id="detailsEdit" name="details">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsLabel">Update Country</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <label for="idDetails" class="col-form-label">State id</label>
+                        <input type="text" class="form-control" id="idDetails" name="id" readonly>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="nameDetails" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameDetails" name="name" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capitalDetails" class="col-form-label">Capital:</label>
+                        <input type="text" class="form-control" id="capitalDetails" name="capital" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codeDetails" class="col-form-label">Code:</label>
+                        <input type="text" class="form-control" id="codeDetails" name="code" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryIdDetails" class="col-form-label">Country:</label>
+                        <input type="text" class="form-control" id="countryIdDetails" name="countryid" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailsDetails" class="col-form-label">Details:</label>
+                        <input type="text" class="form-control" id="detailsDetails" name="details" readonly>
+                    </div>
+
 
                 </form>
             </div>
@@ -582,7 +678,7 @@
                 <p>Are you sure you want to delete the record?</p>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-primary" id="deleteButtonConfirmation"  href="">Yes,Delete</a>
+                <a class="btn btn-primary" id="deleteButtonConfirma"  href="">Yes,Delete</a>
 
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
             </div>
@@ -601,6 +697,7 @@
 <script src="js/scripts.js"></script>
 
 <script src="js/country.js"></script>
+<script src="js/state.js"></script>
 
 
 

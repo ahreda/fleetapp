@@ -414,7 +414,9 @@
                     <th>Description</th>
                     <th>Capital</th>
                     <th>Code</th>
-                    <th>Nationality</th>
+                    <th>Created By</th>
+                    <th>Action</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -423,7 +425,7 @@
                     <td th:text="${country.description}"></td>
                     <td th:text="${country.capital}"></td>
                     <td th:text="${country.code}"></td>
-                    <td th:text="${country.nationality}"></td>
+                    <td th:text="${country.createdBy}"></td>
                     <td>
                         <div class="btn-group">
                           <a th:href="@{/Countries/countryId/(id=${country.id})}" class="btn btn-primary" id="editButton"> Edit</a>

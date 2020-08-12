@@ -33,8 +33,10 @@ $.get(href, function(state, status){
     $('#countryIdDetails').val(state.countryid);
     $('#detailsDetails').val(state.details);
     $('#detailsDetails').val(state.details);
-
-
+    $('#CreatedByDetails').val(state.createdBy);
+    $('#CreatedDate').val(state.createdDate);
+    $('#lastModifiedBy').val(state.lastModifiedBy);
+    $('#lastModifiedDate').val(state.lastModifiedDate);
 
 });
 

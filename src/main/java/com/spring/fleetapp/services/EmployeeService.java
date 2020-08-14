@@ -1,49 +1,49 @@
 package com.spring.fleetapp.services;
 
-import com.spring.fleetapp.models.User;
-import com.spring.fleetapp.repositories.UserRepositories;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.spring.fleetapp.models.Employee;
+import com.spring.fleetapp.models.State;
+import com.spring.fleetapp.repositories.EmployeeRepositories;
+import com.spring.fleetapp.repositories.EmployeeTypeRepositories;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class EmployeeService {
-    @Service
-    public static class UserDetailsImp implements UserDetailsService {
-
-        UserRepositories userRepositories;
-
-        public UserDetailsImp(UserRepositories userRepositories) {
-            this.userRepositories = userRepositories;
-        }
-
-        @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 
-            Optional<User> user = userRepositories.findByUsername(username);
-            if (!user.isPresent()){
-                throw new UsernameNotFoundException(username);
-            }
+EmployeeRepositories employeeRepositories;
 
-                return (UserDetails) user.get();
-        }
-
-
-        /*
-        @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            User user = userRepositories.findByUsername(username);
-
-            if (user == null){
-                throw  new UsernameNotFoundException("User Not found");
-            }
-            return new UserPrincipal(user);
-        }
-
-         */
+    public EmployeeService(EmployeeRepositories employeeRepositories) {
+        this.employeeRepositories = employeeRepositories;
     }
+
+    public List<Employee> getAllEmployees() {
+
+        return employeeRepositories.findAll();
+
+    }
+
+    public void save(Employee employee){
+        employeeRepositories.save(employee);
+
+    }
+
+    public Optional<Employee> findStateById(Integer id){
+
+        return employeeRepositories.findById(id);
+    }
+
+    public void deleteStateById(Integer id){
+
+        employeeRepositories.deleteById(id);
+    }
+
+    public void deleteLocationById(int id) {
+
+        employeeRepositories.deleteById(id);
+    }
+
 }

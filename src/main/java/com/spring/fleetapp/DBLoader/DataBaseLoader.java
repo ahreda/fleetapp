@@ -1,4 +1,6 @@
+/*
 package com.spring.fleetapp.DBLoader;
+
 
 import com.spring.fleetapp.models.User;
 import com.spring.fleetapp.repositories.UserRepositories;
@@ -25,8 +27,10 @@ public class DataBaseLoader implements CommandLineRunner{
 
         User user1 = new User(1, "Reda", "Ahmd", "ahmadreda",userPass );
         User user2 = new User(3, "Ahmad", "Reda", "ahmadadmin",adminPass );
+        User user3 = new User()
 
         userRepositories.save(user1);
         userRepositories.save(user2);
     }
 }
+*/

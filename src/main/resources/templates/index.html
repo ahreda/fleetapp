@@ -328,7 +328,10 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" th:href="@{/VehicleDate}">Vehaicle Data</a></li>
+              <li sec:authorize="hasRole('ROLE_USER')">
+                <a class="" th:href="@{/VehicleDate}">Vehaicle Data</a>
+              </li>
+
               <li><a class="" th:href="@{/Maintenence}">Maintenence</a></li>
               <li><a class="" th:href="@{/Movements}">Movements</a></li>
               <li><a class="" th:href="@{/Hires}">Hires</a></li>

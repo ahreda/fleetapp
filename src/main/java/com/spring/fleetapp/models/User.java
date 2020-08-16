@@ -1,14 +1,7 @@
 package com.spring.fleetapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -16,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -42,9 +35,28 @@ public class User implements UserDetails {
     @NotNull
 	private String password;
 
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable( name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role){
+        roles.add(role);
+
+    }
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ADMIN"));
+
+        List<SimpleGrantedAuthority> authorties = new ArrayList<>();
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+
+        // return Collections.singleton(new SimpleGrantedAuthority("ADMIN"));
     }
 
     @Override

@@ -46,4 +46,7 @@ EmployeeRepositories employeeRepositories;
         employeeRepositories.deleteById(id);
     }
 
+    public Employee findByUsername( String username) {
+        return employeeRepositories.findByUsername(username);
+    }
 }

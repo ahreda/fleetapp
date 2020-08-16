@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -22,7 +24,7 @@ public class State extends Auditable<String>{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;	
+	private Integer id;
 	private String name;
 	private String capital;
     private String code;

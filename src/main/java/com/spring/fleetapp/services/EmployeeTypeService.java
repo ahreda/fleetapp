@@ -5,6 +5,7 @@ import com.spring.fleetapp.repositories.EmployeeTypeRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeTypeService {
@@ -25,4 +26,15 @@ public class EmployeeTypeService {
 
         employeeTypeRepositories.save(employeeType);
    }
+
+   public Optional<EmployeeType> getEmployeeTypeById(Integer id){
+        return employeeTypeRepositories.findEmployeeTypeById(id);
+   }
+
+   public void deleteEmpType(Integer id){
+
+        employeeTypeRepositories.deleteById(id);
+
+   }
+
 }

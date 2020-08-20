@@ -1,11 +1,13 @@
 package com.spring.fleetapp.controllers;
 
 import com.spring.fleetapp.models.Employee;
+import com.spring.fleetapp.models.EmployeeType;
 import com.spring.fleetapp.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -31,12 +33,12 @@ public class EmployeeController {
 
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees",employees);
-
+/*
         model.addAttribute("countries",countryService.getCountries());
         model.addAttribute("states",stateService.getStates());
         model.addAttribute("jobs",jobTitleService.getJobTitles());
         model.addAttribute("employeeTypes",employeeTypeService.getEmployeeTypes());
-
+*/
         return "employee";
 
     }
@@ -47,8 +49,6 @@ public class EmployeeController {
         employeeService.save(employee);
         return "redirect:/Employees";
     }
-
-
 
 
 

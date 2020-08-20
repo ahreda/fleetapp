@@ -45,10 +45,8 @@ $('#detailsModal').modal();
 });
 
 
-$('table #deleteButton').on('click', function(event){
+$('table #detailsButton').on('click', function(event){
 event.preventDefault();
-var href = $(this).attr('href');
-$('#deleteButtonConfirma').attr('href', href);
 
 $('#deleteModal').modal();
 });
